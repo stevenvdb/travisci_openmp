@@ -1,0 +1,5 @@
+language: cpp
+install:
+  - "g++ -o main main.cpp -fopenmp"
+script:
+  - "export OMP_NUM_THREADS=1; ./main; export OMP_NUM_THREADS=4; ./main;"
