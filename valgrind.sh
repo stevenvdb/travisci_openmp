@@ -6,6 +6,8 @@ for name in main main_corrected
 do
     #g++ -Wall -fopenmp -o $name $name.cpp
     # Run helgrind
-    valgrind --tool=helgrind -v --log-file=$name.log ./$name
+    valgrind --tool=helgrind --log-file=$name.log ./$name
+    echo $name
+    cat $name.log
 done
 
