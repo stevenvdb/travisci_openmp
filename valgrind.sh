@@ -1,13 +1,12 @@
 #!/bin/bash
 
-#export LD_LIBRARY_PATH=./lib64:./lib:
+export LD_LIBRARY_PATH=./gcc-6.0.0-no-futex-lib/lib64:./gcc-6.0.0-no-futex-lib/lib:
 
 for name in main main_corrected
 do
-    #g++ -Wall -fopenmp -o $name $name.cpp
     # Run helgrind
-    valgrind --tool=helgrind --log-file=$name.log ./$name
+    valgrind --tool=helgrind --log-file=$name.log --suppression ./$name
     echo $name
-    cat $name.log
+    tail -n1 $name.log
 done
 
