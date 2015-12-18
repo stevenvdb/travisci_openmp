@@ -1,6 +1,7 @@
 language: cpp
 sudo: required
 before_install:
+  - "sudo apt-get update -qq"
   - "sudo apt-get install -qq valgrind wget"
 install:
   - "g++ -o main main.cpp -fopenmp"
