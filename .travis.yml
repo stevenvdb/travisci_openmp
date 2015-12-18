@@ -1,5 +1,6 @@
 language: cpp
 install:
   - "g++ -o main main.cpp -fopenmp"
+  - "g++ -o main_corrected main_corrected.cpp -fopenmp"
 script:
-  - "export OMP_NUM_THREADS=1; ./main; export OMP_NUM_THREADS=4; ./main;"
+  - "export OMP_NUM_THREADS=4; bash valgrind.sh;"

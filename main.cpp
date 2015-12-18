@@ -6,15 +6,14 @@ using namespace std;
 
 int main () 
 {
-  int i, n, nthreads;
+  int i, n, nmax;
   n = 0;
+  nmax = 1000;
   #pragma omp parallel for
-  for (i=1;i<11;i++) {
-    nthreads = omp_get_num_threads();
+  for (i=1;i<=nmax;i++) {
     n += i;
   }
-  cout << "Running OpenMP with " << nthreads << " threads\n"; 
-  cout << "Sum of first 10 natural numbers is " << n << '\n' ;
-  if (n==55) return 0;
+  cout << "Sum of first " << nmax << " natural numbers is " << n << ", should be " << nmax*(nmax+1)/2 << '\n' ;
+  if (n==nmax*(nmax+1)/2) return 0;
   else return 1;
 }
